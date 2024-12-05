@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>Preparation of Windows Forensic Virtual Machine</title>
+      <link href="/2024/10/27/Preparation-of-Windows-Forensic-Virtual-Machine/"/>
+      <url>/2024/10/27/Preparation-of-Windows-Forensic-Virtual-Machine/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Customizer-URL"><a href="#Customizer-URL" class="headerlink" title="Customizer URL"></a>Customizer URL</h3><p><a href="https://github.com/digitalsleuth/WIN-FOR">https://github.com/digitalsleuth/WIN-FOR</a></p><h3 id="Requirement"><a href="#Requirement" class="headerlink" title="Requirement"></a>Requirement</h3><ul><li>Windows 10 Virtual Machine (Suggested because of Windows 11 some annoying designs)</li><li>Latest Update</li></ul><h3 id="Installation-Steps"><a href="#Installation-Steps" class="headerlink" title="Installation Steps"></a>Installation Steps</h3><ol><li><p>Download the installer from release<br><a href="https://github.com/digitalsleuth/WIN-FOR/releases/">WIN-FOR</a></p></li><li><p>Right-click and run the installer as the administrator</p><img src="/2024/10/27/Preparation-of-Windows-Forensic-Virtual-Machine/winfor-customizer-menu.png" class=""></li><li><p>Click “Uncheck All”</p></li><li><p>Click “Requirements” Category</p></li><li><p>Check “Themed” and choose one of the themes</p></li><li><p>Install</p></li><li><p>Reboot</p></li><li><p>Check Errors and Fix Errors (with reboot)</p></li><li><p>Install all and reboot</p></li></ol><h3 id="Respects-and-Thanks"><a href="#Respects-and-Thanks" class="headerlink" title="Respects and Thanks"></a>Respects and Thanks</h3><ul><li><a href="https://github.com/digitalsleuth/WIN-FOR">digitalsleuth - WIN-FOR</a></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Forensics </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> WindowsForensics </tag>
+            
+            <tag> Forensics </tag>
+            
+            <tag> Toolbox </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
