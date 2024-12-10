@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>HKCert CTF Forensic - Wheres the APT Attack 2 Guide | Edges</title><meta name="author" content="Nightsedge"><meta name="copyright" content="Nightsedge"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="HKCert CTF Forensic - Q2 Where&#39;s the APT Attack? APT攻擊在哪裡？ Suspicious process 可疑進程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HKCert CTF Forensic - Wheres the APT Attack 2 Guide">
+<meta property="og:url" content="https://0nightsedge0.github.io/2024/12/11/hkcert-Wheres-the-APT-Attack-2/index.html">
+<meta property="og:site_name" content="Edges">
+<meta property="og:description" content="HKCert CTF Forensic - Q2 Where&#39;s the APT Attack? APT攻擊在哪裡？ Suspicious process 可疑進程">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://0nightsedge0.github.io/img/SmileMan.jpg">
+<meta property="article:published_time" content="2024-12-10T23:50:47.000Z">
+<meta property="article:modified_time" content="2024-12-10T18:14:54.012Z">
+<meta property="article:author" content="Nightsedge">
+<meta property="article:tag" content="WindowsForensics">
+<meta property="article:tag" content="Forensics">
+<meta property="article:tag" content="HKcertCTF2024">
+<meta property="article:tag" content="MemoryForensic">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://0nightsedge0.github.io/img/SmileMan.jpg"><link rel="shortcut icon" href="/img/favicon_n.ico"><link rel="canonical" href="https://0nightsedge0.github.io/2024/12/11/hkcert-Wheres-the-APT-Attack-2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"You have switched to Traditional Chinese","cht_to_chs":"You have switched to Simplified Chinese","day_to_night":"You have switched to Dark Mode","night_to_day":"You have switched to Light Mode","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'HKCert CTF Forensic - Wheres the APT Attack 2 Guide',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg" style="background-color: #424242;"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/SmileMan.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/n_logo.png" alt="Logo"><span class="site-name">Edges</span></a><a class="nav-page-title" href="/"><span class="site-name">HKCert CTF Forensic - Wheres the APT Attack 2 Guide</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">HKCert CTF Forensic - Wheres the APT Attack 2 Guide</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2024-12-10T23:50:47.000Z" title="Created 2024-12-10 23:50:47">2024-12-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2024-12-10T18:14:54.012Z" title="Updated 2024-12-10 18:14:54">2024-12-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/HKcertCTF2024/">HKcertCTF2024</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="container post-content" id="article-container"><h1 id="HKCert-CTF-Forensic-Q2-Where’s-the-APT-Attack-APT攻擊在哪裡？-Suspicious-process-可疑進程"><a href="#HKCert-CTF-Forensic-Q2-Where’s-the-APT-Attack-APT攻擊在哪裡？-Suspicious-process-可疑進程" class="headerlink" title="HKCert CTF Forensic - Q2: Where’s the APT Attack?  APT攻擊在哪裡？ Suspicious process 可疑進程"></a>HKCert CTF Forensic - Q2: Where’s the APT Attack?  APT攻擊在哪裡？ Suspicious process 可疑進程</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><ul>
+<li><strong>Author:</strong> Nightsedge</li>
+<li><strong>Categories:</strong> forensics</li>
+</ul>
+<h2 id="Question-Description-zh-HK"><a href="#Question-Description-zh-HK" class="headerlink" title="Question Description (zh-HK)"></a>Question Description (zh-HK)</h2><p>請以第1題繼續。</p>
+<p>您是高級網絡安全分析師。</p>
+<p>您的經理要求您協助分析Windows內存映像，作為我們目前調查的一部分。</p>
+<p>這臺受害機器已經被隔離，Windows內存映像已經被提取供您調查。</p>
+<p>預計內存映像將揭示一個包含命令和控制（C2）進程的常見程序，通常被稱為信標 (beacon)。</p>
+<p>請找出信標進程中的旗。只需要一點逆向技巧吧?</p>
+<h2 id="Question-Description-en"><a href="#Question-Description-en" class="headerlink" title="Question Description (en)"></a>Question Description (en)</h2><p>Please continue from Q1.</p>
+<p>You are the Senior Cybersecurity Analyst.</p>
+<p>Your Manager is requesting your assistance in analyzing a Windows memory image as a component of our current investigation.</p>
+<p>This victim machine has been isolated and the Windows memory image has been extracted for your review.</p>
+<p>The memory image is expected to reveal a routine that includes a command and control (C2) process, commonly known as a beacon.</p>
+<p>Please find the flag from the beacon process. Just need a bit of Reverse engineering technique?</p>
+<h2 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a>Steps</h2><ol>
+<li>Open and analyze the memory image by using Volatility3 and MemProcFS</li>
+<li>Identify the interesting persistence</li>
+<li>Identify the malicious process</li>
+<li>Identify the real malicious file and get flag from the process images</li>
+</ol>
+<h3 id="Warning"><a href="#Warning" class="headerlink" title="Warning"></a>Warning</h3><ul>
+<li>Real Malware</li>
+<li>Can bypass Anti-Virus Solutions</li>
+<li>Almost no signature? maybe not?</li>
+<li>Not useful: malfind (because no signature), yarascan (or you have your own great Yara signature)</li>
+<li>The author (me) is too lazy to tidy up the write-ups~</li>
+</ul>
+<h2 id="Guide"><a href="#Guide" class="headerlink" title="Guide"></a>Guide</h2><h3 id="1-Find-the-persistence-via-MemProcFS"><a href="#1-Find-the-persistence-via-MemProcFS" class="headerlink" title="1. Find the persistence via MemProcFS"></a>1. Find the persistence via MemProcFS</h3><p>After you checked a lot, you can find that there are 2 tasks one is <code>Windows Defender Scheduled Scan</code> and another one is <code>Windows Defender Scheduled Scan-1</code> because of the naming convention from MemProcFS.  </p>
+<p>From <code>timeline_task.csv</code>, it already showed this abnormal task.  </p>
+<img src="/2024/12/11/hkcert-Wheres-the-APT-Attack-2/3.abnormal_schtask.png" class="" title="3.abnormal_schtask">
+
+<p>There are 2 scheduled tasks with same name. However,</p>
+<ul>
+<li><code>Windows Defender Scheduled Scan-1</code> is created by the system, which is a real and legitimate task.</li>
+</ul>
+<img src="/2024/12/11/hkcert-Wheres-the-APT-Attack-2/3.schtasks_check1.png" class="" title="3.schtasks_check1">
+
+<ul>
+<li><code>Windows Defender Scheduled Scan</code> is created by <code>DIGITALHARBOUR\night01</code>, which should not be a legitimate task, possibly persistence with a fake name.</li>
+</ul>
+<img src="/2024/12/11/hkcert-Wheres-the-APT-Attack-2/3.schtasks_check2.png" class="" title="3.schtasks_check2">
+
+<img src="/2024/12/11/hkcert-Wheres-the-APT-Attack-2/3.schtasks_check2-author.png" class="" title="3.schtasks_check2-author">
+
+<p>And its action is <code>ProgramData\Windows Defender\MpCmdRun.exe</code>, which seems a bit wired.  </p>
+<img src="/2024/12/11/hkcert-Wheres-the-APT-Attack-2/3.schtasks_check2-action.png" class="" title="3.schtasks_check2-action">
+
+<p>Also, the <code>timeline_ntfs.csv</code> from MemProcFS shows that the file creation and the update on this folder <code>ProgramData\Windows Defender\</code>.  </p>
+<h3 id="2-1-Using-netscan-function-to-get-all-the-network-connected-processes-and-export-as-CSV-format"><a href="#2-1-Using-netscan-function-to-get-all-the-network-connected-processes-and-export-as-CSV-format" class="headerlink" title="2.1 Using netscan function to get all the network connected processes and export as CSV format"></a>2.1 Using netscan function to get all the network connected processes and export as CSV format</h3><p><code>vol.py -r csv -f /home/kali/Downloads/hk_oct_apt_attack.mem windows.netscan.NetScan &gt; ./review_records/windows.netscan.NetScan.csv</code></p>
+<p>Save it as a xlsx excel file and paste records to the new excel sheet.  </p>
+<p>Although you can search the reputation of the ForeginAddr IP addresses Threat Intelligence (TI), you know those results are still unrated or safe.  </p>
+<h3 id="2-2-Using-pstree-function-to-get-all-the-network-activities-processes-and-export-as-CSV-format"><a href="#2-2-Using-pstree-function-to-get-all-the-network-activities-processes-and-export-as-CSV-format" class="headerlink" title="2.2 Using pstree function to get all the network activities processes and export as CSV format"></a>2.2 Using pstree function to get all the network activities processes and export as CSV format</h3><p><code>vol.py -r csv -f /home/kali/Downloads/hk_oct_apt_attack.mem windows.pstree.PsTree &gt; ./review_records/windows.pstree.PsTree.csv</code></p>
+<p>And copy the result to the netscan excel with a new sheet.  </p>
+<h3 id="2-3-Filter-out-network-activities-process-by-looking-up-the-netscan-excel-results"><a href="#2-3-Filter-out-network-activities-process-by-looking-up-the-netscan-excel-results" class="headerlink" title="2.3 Filter out network activities process by looking up the netscan excel results"></a>2.3 Filter out network activities process by looking up the netscan excel results</h3><p><code>=INDEX(windows.netscan.NetScan!F:F, MATCH(windows.pstree.PsTree!$B2, windows.netscan.NetScan!$I:$I,0))</code></p>
+<img src="/2024/12/11/hkcert-Wheres-the-APT-Attack-2/3.3.filterprocess.png" class="" title="3.4.filter process">
+<p>Filter out the <code>N.A.</code> values.</p>
+<p>Suggested to collect those PIDs and listing them for further investigation.  </p>
+<p>As an experienced blue team or IR member, you will find that the <code>MpCmdRun.exe</code> file path is not an expected path!  </p>
+<p><code>MpCmdRun.exe (PID: 10344)</code> is the Microsoft Defender Anti-Virus Software CMD toolkit. (legit application)</p>
+<p>The correct path is <code>\ProgramData\Microsoft\Windows Defender\Platform\&lt;antimalware platform version&gt;\MpCmdRun.exe</code> from Microsoft Document.<br><code>C:\\ProgramData\\Windows Defender\\MpCmdRun.exe</code> is not correct.  </p>
+<img src="/2024/12/11/hkcert-Wheres-the-APT-Attack-2/3.4.MpCmdRun.png" class="" title="3.4.MpCmdRun">
+
+<p>Therefore, it is believed that it is not an expected process from an abnormal scheduled task.</p>
+<h2 id="3-Find-the-real-malicious-file"><a href="#3-Find-the-real-malicious-file" class="headerlink" title="3. Find the real malicious file"></a>3. Find the real malicious file</h2><h3 id="3-1-Dump-the-possible-process-executable-files"><a href="#3-1-Dump-the-possible-process-executable-files" class="headerlink" title="3.1 Dump the possible process executable files"></a>3.1 Dump the possible process executable files</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vol.py -f /home/kali/Downloads/hk_oct_apt_attack.mem -o ./dump_temp/ windows.dumpfiles.DumpFiles --pid 10344</span><br></pre></td></tr></table></figure>
+<img src="/2024/12/11/hkcert-Wheres-the-APT-Attack-2/4.1.dumpc2.png" class="" title="4.1.dumpc2">
+
+<h3 id="3-2-Review-all-files"><a href="#3-2-Review-all-files" class="headerlink" title="3.2 Review all files"></a>3.2 Review all files</h3><h3 id="3-3-found-interesting-C-DLLs"><a href="#3-3-found-interesting-C-DLLs" class="headerlink" title="3.3 found interesting C# DLLs"></a>3.3 found interesting C# DLLs</h3><img src="/2024/12/11/hkcert-Wheres-the-APT-Attack-2/4.3.interestingCsharpdlls.png" class="" title="4.3.interestingC#dlls">
+
+<h3 id="3-4-Decompile-C-DLL-using-ILSpy"><a href="#3-4-Decompile-C-DLL-using-ILSpy" class="headerlink" title="3.4 Decompile C# DLL using ILSpy"></a>3.4 Decompile C# DLL using ILSpy</h3><img src="/2024/12/11/hkcert-Wheres-the-APT-Attack-2/4.4.interestingCsharpfunctions.png" class="" title="4.4.interestingCsharpfunctions">
+
+<ul>
+<li>The <code>EncryptedKey</code> contains the flag, but you need to use <code>key</code> and <code>iv</code> to decrypt it.</li>
+<li>The <code>Main</code> function will call the loaded <code>MsMpEng.dll</code> with <code>StartW()</code> function which may contain the real C2 payload.</li>
+</ul>
+<h3 id="3-5-Decrypt-the-EncryptedKey"><a href="#3-5-Decrypt-the-EncryptedKey" class="headerlink" title="3.5 Decrypt the EncryptedKey"></a>3.5 Decrypt the <code>EncryptedKey</code></h3><p>Here is the decypt program in C#:</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> System;</span><br><span class="line"><span class="keyword">using</span> System.IO;</span><br><span class="line"><span class="keyword">using</span> System.Security.Cryptography;</span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> <span class="title">decryptctf</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title">Program</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> <span class="built_in">string</span> key = <span class="string">&quot;0123456789ABCDEF0123456789ABCDEF&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> <span class="built_in">string</span> iv = <span class="string">&quot;ABCDEF0123456789ABCDEF0123456789&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">readonly</span> <span class="built_in">string</span> EncryptedKey = <span class="string">&quot;uT9PNcMlxqUI3e95Kq67i3inLuBCJ1DzpdFNNLviRFA69gpLbtz0fOk2pTY4j+YsivyqzgYtOi71TZSF/9IbRg==&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="built_in">byte</span>[] <span class="title">StringToByteArray</span>(<span class="params"><span class="built_in">string</span> hex</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">byte</span>[] array = <span class="keyword">new</span> <span class="built_in">byte</span>[hex.Length / <span class="number">2</span>];</span><br><span class="line">            <span class="keyword">for</span> (<span class="built_in">int</span> i = <span class="number">0</span>; i &lt; array.Length; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                array[i] = Convert.ToByte(hex.Substring(i * <span class="number">2</span>, <span class="number">2</span>), <span class="number">16</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> array;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="built_in">string</span> <span class="title">Decrypt</span>(<span class="params"><span class="built_in">string</span> cipherText</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">using</span> (Aes aesAlg = Aes.Create())</span><br><span class="line">            &#123;</span><br><span class="line">                aesAlg.Key = StringToByteArray(key);</span><br><span class="line">                aesAlg.IV = StringToByteArray(iv);</span><br><span class="line"></span><br><span class="line">                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">using</span> (MemoryStream msDecrypt = <span class="keyword">new</span> MemoryStream(Convert.FromBase64String(cipherText)))</span><br><span class="line">                <span class="keyword">using</span> (CryptoStream csDecrypt = <span class="keyword">new</span> CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))</span><br><span class="line">                <span class="keyword">using</span> (StreamReader srDecrypt = <span class="keyword">new</span> StreamReader(csDecrypt))</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">return</span> srDecrypt.ReadToEnd();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="built_in">string</span>[] args</span>)</span></span><br><span class="line">        &#123;</span><br><span class="line">            Console.WriteLine(Decrypt(EncryptedKey));</span><br><span class="line">            Console.ReadKey();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Get the base64 encoded string.</p>
+<img src="/2024/12/11/hkcert-Wheres-the-APT-Attack-2/4.5DecryptedEncryptedKey.png" class="" title="4.5DecryptedEncryptedKey">
+
+<h3 id="4-6-Decode-again-and-get-the-flag"><a href="#4-6-Decode-again-and-get-the-flag" class="headerlink" title="4.6 Decode again and get the flag"></a>4.6 Decode again and get the flag</h3><img src="/2024/12/11/hkcert-Wheres-the-APT-Attack-2/4.6Decodedflag.png" class="" title="4.6Decodedflag">
+
+
+<h2 id="Flag"><a href="#Flag" class="headerlink" title="Flag"></a>Flag</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hkcert24&#123;4p7_4774ck_71574_dll_51d3_l04d1n6!&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Next-lets-do-some-analysis-on-the-C2-beacon-Coming-Soon"><a href="#Next-lets-do-some-analysis-on-the-C2-beacon-Coming-Soon" class="headerlink" title="Next lets do some analysis on the C2 beacon~ (Coming Soon~)"></a>Next lets do some analysis on the C2 beacon~ (Coming Soon~)</h3></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://github.com/0Nightsedge0">Nightsedge</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://0nightsedge0.github.io/2024/12/11/hkcert-Wheres-the-APT-Attack-2/">https://0nightsedge0.github.io/2024/12/11/hkcert-Wheres-the-APT-Attack-2/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/WindowsForensics/">WindowsForensics</a><a class="post-meta__tags" href="/tags/Forensics/">Forensics</a><a class="post-meta__tags" href="/tags/HKcertCTF2024/">HKcertCTF2024</a><a class="post-meta__tags" href="/tags/MemoryForensic/">MemoryForensic</a></div><div class="post-share"><div class="social-share" data-image="/img/SmileMan.jpg" data-sites="facebook,twitter,wechat"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2024/12/11/hkcert-Wheres-the-APT-Attack-1/" title="HKCert CTF Forensic - Wheres the APT Attack 1 Guide"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">HKCert CTF Forensic - Wheres the APT Attack 1 Guide</div></div><div class="info-2"><div class="info-item-1">HKCert CTF Forensic - Q1 Where's the APT Attack? APT攻擊在哪裡？ Suspicious file 可疑檔案</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2024/12/11/hkcert-Wheres-the-APT-Attack-1/" title="HKCert CTF Forensic - Wheres the APT Attack 1 Guide"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-12-10</div><div class="info-item-2">HKCert CTF Forensic - Wheres the APT Attack 1 Guide</div></div><div class="info-2"><div class="info-item-1">HKCert CTF Forensic - Q1 Where's the APT Attack? APT攻擊在哪裡？ Suspicious file 可疑檔案</div></div></div></a><a class="pagination-related" href="/2024/10/27/Preparation-of-Windows-Forensic-Virtual-Machine/" title="Preparation of Windows Forensic Virtual Machine"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2024-10-27</div><div class="info-item-2">Preparation of Windows Forensic Virtual Machine</div></div><div class="info-2"><div class="info-item-1">Brief Setup for Preparation of Windows Forensic Virtual Machine</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/SmileMan.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Nightsedge</div><div class="author-info-description">Half is worse than None at All.</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/0Nightsedge0" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#HKCert-CTF-Forensic-Q2-Where%E2%80%99s-the-APT-Attack-APT%E6%94%BB%E6%93%8A%E5%9C%A8%E5%93%AA%E8%A3%A1%EF%BC%9F-Suspicious-process-%E5%8F%AF%E7%96%91%E9%80%B2%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">HKCert CTF Forensic - Q2: Where’s the APT Attack?  APT攻擊在哪裡？ Suspicious process 可疑進程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Summary"><span class="toc-number">1.1.</span> <span class="toc-text">Summary</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Question-Description-zh-HK"><span class="toc-number">1.2.</span> <span class="toc-text">Question Description (zh-HK)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Question-Description-en"><span class="toc-number">1.3.</span> <span class="toc-text">Question Description (en)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Steps"><span class="toc-number">1.4.</span> <span class="toc-text">Steps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Warning"><span class="toc-number">1.4.1.</span> <span class="toc-text">Warning</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Guide"><span class="toc-number">1.5.</span> <span class="toc-text">Guide</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Find-the-persistence-via-MemProcFS"><span class="toc-number">1.5.1.</span> <span class="toc-text">1. Find the persistence via MemProcFS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Using-netscan-function-to-get-all-the-network-connected-processes-and-export-as-CSV-format"><span class="toc-number">1.5.2.</span> <span class="toc-text">2.1 Using netscan function to get all the network connected processes and export as CSV format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Using-pstree-function-to-get-all-the-network-activities-processes-and-export-as-CSV-format"><span class="toc-number">1.5.3.</span> <span class="toc-text">2.2 Using pstree function to get all the network activities processes and export as CSV format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-Filter-out-network-activities-process-by-looking-up-the-netscan-excel-results"><span class="toc-number">1.5.4.</span> <span class="toc-text">2.3 Filter out network activities process by looking up the netscan excel results</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Find-the-real-malicious-file"><span class="toc-number">1.6.</span> <span class="toc-text">3. Find the real malicious file</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Dump-the-possible-process-executable-files"><span class="toc-number">1.6.1.</span> <span class="toc-text">3.1 Dump the possible process executable files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Review-all-files"><span class="toc-number">1.6.2.</span> <span class="toc-text">3.2 Review all files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-found-interesting-C-DLLs"><span class="toc-number">1.6.3.</span> <span class="toc-text">3.3 found interesting C# DLLs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-Decompile-C-DLL-using-ILSpy"><span class="toc-number">1.6.4.</span> <span class="toc-text">3.4 Decompile C# DLL using ILSpy</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-5-Decrypt-the-EncryptedKey"><span class="toc-number">1.6.5.</span> <span class="toc-text">3.5 Decrypt the EncryptedKey</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-Decode-again-and-get-the-flag"><span class="toc-number">1.6.6.</span> <span class="toc-text">4.6 Decode again and get the flag</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flag"><span class="toc-number">1.7.</span> <span class="toc-text">Flag</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Next-lets-do-some-analysis-on-the-C2-beacon-Coming-Soon"><span class="toc-number">1.7.1.</span> <span class="toc-text">Next lets do some analysis on the C2 beacon~ (Coming Soon~)</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/hkcert-Wheres-the-APT-Attack-2/" title="HKCert CTF Forensic - Wheres the APT Attack 2 Guide">HKCert CTF Forensic - Wheres the APT Attack 2 Guide</a><time datetime="2024-12-10T23:50:47.000Z" title="Created 2024-12-10 23:50:47">2024-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/11/hkcert-Wheres-the-APT-Attack-1/" title="HKCert CTF Forensic - Wheres the APT Attack 1 Guide">HKCert CTF Forensic - Wheres the APT Attack 1 Guide</a><time datetime="2024-12-10T22:58:32.000Z" title="Created 2024-12-10 22:58:32">2024-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/10/27/Preparation-of-Windows-Forensic-Virtual-Machine/" title="Preparation of Windows Forensic Virtual Machine">Preparation of Windows Forensic Virtual Machine</a><time datetime="2024-10-27T00:00:00.000Z" title="Created 2024-10-27 00:00:00">2024-10-27</time></div></div></div></div></div></div></main><footer id="footer" style="background-color: #424242;"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By Nightsedge</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Everything in this world is magic, except to the magician.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
