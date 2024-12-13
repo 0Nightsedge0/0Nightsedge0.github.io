@@ -8,7 +8,7 @@
 <meta property="og:image" content="https://0nightsedge0.github.io/img/SmileMan.jpg">
 <meta property="article:author" content="Nightsedge">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://0nightsedge0.github.io/img/SmileMan.jpg"><link rel="shortcut icon" href="/img/favicon_n.ico"><link rel="canonical" href="https://0nightsedge0.github.io/archives/2024/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+<meta name="twitter:image" content="https://0nightsedge0.github.io/img/SmileMan.jpg"><link rel="shortcut icon" href="/img/favicon_n.ico"><link rel="canonical" href="https://0nightsedge0.github.io/archives/2024/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
     (() => {
       
     const saveToLocal = {
@@ -98,7 +98,14 @@
     detectApple()
   
     })()
-  </script><script>const GLOBAL_CONFIG = {
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-WZTCLYCJGV"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-WZTCLYCJGV')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-WZTCLYCJGV', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: undefined,
@@ -150,7 +157,7 @@
           </div>
           <ul class="card-category-list" id="aside-cat-list">
             <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Forensics/"><span class="card-category-list-name">Forensics</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/HKcertCTF2024/"><span class="card-category-list-name">HKcertCTF2024</span><span class="card-category-list-count">2</span></a></li>
-          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/WindowsForensics/" style="font-size: 1.45em; color: rgb(185, 50, 50);">WindowsForensics</a><a href="/tags/Forensics/" style="font-size: 1.45em; color: rgb(175, 50, 142);">Forensics</a><a href="/tags/Toolbox/" style="font-size: 1.15em; color: rgb(65, 72, 165);">Toolbox</a><a href="/tags/HKcertCTF2024/" style="font-size: 1.3em; color: rgb(129, 175, 50);">HKcertCTF2024</a><a href="/tags/MemoryForensic/" style="font-size: 1.3em; color: rgb(108, 102, 50);">MemoryForensic</a></div></div><div class="card-widget card-archives">
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/WindowsForensics/" style="font-size: 1.45em; color: rgb(179, 90, 190);">WindowsForensics</a><a href="/tags/Forensics/" style="font-size: 1.45em; color: rgb(72, 129, 50);">Forensics</a><a href="/tags/Toolbox/" style="font-size: 1.15em; color: rgb(199, 161, 66);">Toolbox</a><a href="/tags/HKcertCTF2024/" style="font-size: 1.3em; color: rgb(131, 57, 61);">HKcertCTF2024</a><a href="/tags/MemoryForensic/" style="font-size: 1.3em; color: rgb(166, 131, 64);">MemoryForensic</a></div></div><div class="card-widget card-archives">
     <div class="item-headline">
       <i class="fas fa-archive"></i>
       <span>Archives</span>

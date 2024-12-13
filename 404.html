@@ -8,7 +8,7 @@
 <meta property="og:image" content="https://0nightsedge0.github.io/img/SmileMan.jpg">
 <meta property="article:author" content="Nightsedge">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://0nightsedge0.github.io/img/SmileMan.jpg"><link rel="shortcut icon" href="/img/favicon_n.ico"><link rel="canonical" href="https://0nightsedge0.github.io/404.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+<meta name="twitter:image" content="https://0nightsedge0.github.io/img/SmileMan.jpg"><link rel="shortcut icon" href="/img/favicon_n.ico"><link rel="canonical" href="https://0nightsedge0.github.io/404.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//www.google-analytics.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
     (() => {
       
     const saveToLocal = {
@@ -98,7 +98,14 @@
     detectApple()
   
     })()
-  </script><script>const GLOBAL_CONFIG = {
+  </script><script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-WZTCLYCJGV"></script><script>window.dataLayer = window.dataLayer || []
+function gtag(){dataLayer.push(arguments)}
+gtag('js', new Date())
+gtag('config', 'G-WZTCLYCJGV')
+btf.addGlobalFn('pjaxComplete', () => {
+  gtag('config', 'G-WZTCLYCJGV', {'page_path': window.location.pathname})
+}, 'google_analytics')
+</script><script>const GLOBAL_CONFIG = {
   root: '/',
   algolia: undefined,
   localSearch: undefined,
