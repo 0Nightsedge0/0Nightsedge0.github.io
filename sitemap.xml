@@ -4,7 +4,16 @@
   <url>
     <loc>https://0nightsedge0.github.io/2025/01/12/CVE-2024-9950-Forescout-SecureConnector/</loc>
     
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://0nightsedge0.github.io/2024/12/31/HTB-Sherlocks-Compromised/</loc>
+    
+    <lastmod>2025-01-14</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -14,15 +23,6 @@
     <loc>https://0nightsedge0.github.io/2024/12/11/hkcert-Wheres-the-APT-Attack-1/</loc>
     
     <lastmod>2025-01-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://0nightsedge0.github.io/2024/12/31/HTB-Sherlocks-Compromised/</loc>
-    
-    <lastmod>2025-01-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -103,7 +103,7 @@
 
   <url>
     <loc>https://0nightsedge0.github.io/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -111,84 +111,84 @@
   
   <url>
     <loc>https://0nightsedge0.github.io/tags/CVE/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/tags/Forescout/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/tags/Forensics/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/tags/Hackthebox/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/tags/HTB/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/tags/Sherlocks/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/tags/SOC/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/tags/DFIR/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/tags/WindowsForensics/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/tags/Toolbox/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/tags/HKcertCTF2024/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/tags/MemoryForensic/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -197,28 +197,28 @@
   
   <url>
     <loc>https://0nightsedge0.github.io/categories/CVE/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/categories/HTB-Sherlocks/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/categories/Forensics/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://0nightsedge0.github.io/categories/HKcertCTF2024/</loc>
-    <lastmod>2025-01-12</lastmod>
+    <lastmod>2025-01-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
