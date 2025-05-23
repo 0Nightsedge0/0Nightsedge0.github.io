@@ -19,8 +19,8 @@ https://0nightsedge0.github.io/tags/Forensics/
 https://0nightsedge0.github.io/tags/Hackthebox/
 https://0nightsedge0.github.io/tags/HTB/
 https://0nightsedge0.github.io/tags/Sherlocks/
-https://0nightsedge0.github.io/tags/SOC/
 https://0nightsedge0.github.io/tags/DFIR/
+https://0nightsedge0.github.io/tags/SOC/
 https://0nightsedge0.github.io/tags/WindowsForensics/
 https://0nightsedge0.github.io/tags/Toolbox/
 https://0nightsedge0.github.io/tags/HKcertCTF2024/
