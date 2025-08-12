@@ -1,3 +1,4 @@
+https://0nightsedge0.github.io/2025/08/13/MDE-Advanced-hunting-KQL-Process-Tree/
 https://0nightsedge0.github.io/2025/05/15/2025-May-1-Temp-Vuln-Report/
 https://0nightsedge0.github.io/2025/05/14/CVE-2025-4540-C-Lodop/
 https://0nightsedge0.github.io/2024/12/31/HTB-Sherlocks-OpTinselTrace24-4-Neural-Noel/
@@ -21,11 +22,17 @@ https://0nightsedge0.github.io/tags/HTB/
 https://0nightsedge0.github.io/tags/Sherlocks/
 https://0nightsedge0.github.io/tags/SOC/
 https://0nightsedge0.github.io/tags/DFIR/
+https://0nightsedge0.github.io/tags/BlueTeam/
+https://0nightsedge0.github.io/tags/Defend/
+https://0nightsedge0.github.io/tags/MDE/
+https://0nightsedge0.github.io/tags/MDATP/
+https://0nightsedge0.github.io/tags/KQL/
 https://0nightsedge0.github.io/tags/WindowsForensics/
 https://0nightsedge0.github.io/tags/Toolbox/
 https://0nightsedge0.github.io/tags/HKcertCTF2024/
 https://0nightsedge0.github.io/tags/MemoryForensic/
 https://0nightsedge0.github.io/categories/CVE/
 https://0nightsedge0.github.io/categories/HTB-Sherlocks/
+https://0nightsedge0.github.io/categories/BlueTeam/
 https://0nightsedge0.github.io/categories/Forensics/
 https://0nightsedge0.github.io/categories/HKcertCTF2024/
